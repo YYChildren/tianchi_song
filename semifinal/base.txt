@@ -1,0 +1,43 @@
+用户行为表（mars_tianchi_user_actions）
+列名               类型          说明                                        示例
+user_id            String        用户唯一标识                                7063b3d0c075a4d276c5f06f4327cf4a
+song_id            String        歌曲唯一标识                                effb071415be51f11e845884e67c0f8c
+gmt_create         String        用户播放时间（unix时间戳表示）精确到小时    1426406400
+action_type        String        行为类型：1，播放；2，下载，3，收藏         1
+Ds                 String        记录收集日（分区）                          20150315
+注：用户对歌曲的任意行为为一行数据。
+
+
+歌曲艺人（mars_tianchi_songs）
+列名               类型          说明                                        示例
+song_id            String        歌曲唯一标识                                c81f89cf7edd24930641afa2e411b09c
+artist_id          String        歌曲所属的艺人Id                            03c6699ea836decbc5c8fc2dbae7bd3b
+publish_time       String        歌曲发行时间，精确到天                      20150325
+song_init_plays    String        歌曲的初始播放数，表明该歌曲的初始热度      0
+Language           String        数字表示1,2,3…                              100
+Gender             String        1,2,3                                       1
+
+Query: describe mars_tianchi_merge
++-----------------+--------+---------+
+| name            | type   | comment |
++-----------------+--------+---------+
+| song_id         | string |         |
+| artist_id       | string |         |
+| publish_time    | string |         |
+| song_init_plays | string |         |
+| language        | string |         |
+| gender          | string |         |
+| user_id         | string |         |
+| gmt_create      | string |         |
+| action_type     | string |         |
+| ds              | string |         |
++-----------------+--------+---------+
+
+Query: describe result
++-----------+--------+---------+
+| name      | type   | comment |
++-----------+--------+---------+
+| artist_id | string |         |
+| Plays     | int    |         |
+| Ds        | string |         |
++-----------+--------+---------+

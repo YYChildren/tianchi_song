@@ -1,0 +1,1 @@
+su - hdfs -c "hadoop fs -chown -R root /user/hive/warehouse/db_song_p2.db"
