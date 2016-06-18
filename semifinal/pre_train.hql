@@ -52,7 +52,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
     ds,
     -- 时间属性
     (case when ds > '20150700' and ds < '20150800' then 1 else 2 end) months,
-    (datediff(from_unixtime(unix_timestamp(ds,"yyyyMMdd")), from_unixtime(unix_timestamp('20150701',"yyyyMMdd"))) + 1)/7 weekths,
+    cast((datediff(from_unixtime(unix_timestamp(ds,"yyyyMMdd")), from_unixtime(unix_timestamp('20150701',"yyyyMMdd"))) + 1)/7 as int) weekths,
     (datediff(from_unixtime(unix_timestamp(ds,"yyyyMMdd")), from_unixtime(unix_timestamp('20150701',"yyyyMMdd"))) + 1)  days,
     weekday(from_unixtime(unix_timestamp(ds,"yyyyMMdd"))) dayofweek,
     count(case action_type when 1 then 1 else null end) Plays
